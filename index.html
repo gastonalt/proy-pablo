@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="body"></div>
+    <script>
+
+let headers = new Headers();
+
+headers.append('Content-Type', 'application/json');
+headers.append('Accept', 'application/json');
+
+headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+headers.append('Access-Control-Allow-Credentials', 'true');
+
+headers.append('GET', 'POST', 'OPTIONS');
+
+    fetch('http://localhost:3000/',{
+    method: 'GET',
+    headers: headers
+    }).then((objeto)=>{
+        return objeto.json()
+    }).then(data => {
+        // Maneja los datos obtenidos
+        console.log(data);
+        document.body = document.createElement("body");
+        document.body.innerHTML = data.name + ' - ' + data.length;
+    })
+
+    </script>
+</body>
+</html>
